@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://3rxna3mlb5l7"]
+
+[ext_resource type="Texture2D" uid="uid://bw1n31wa3wq8k" path="res://assets/player/Player.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://uoi18cydjayu" path="res://scripts/player.gd" id="1_dovo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avk55"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1394705684]
+script = ExtResource("1_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=959187897]
+scale = Vector2(0.08173477, 0.081734784)
+texture = ExtResource("1_8afob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1407034077]
+shape = SubResource("RectangleShape2D_avk55")
+
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=411106056]
