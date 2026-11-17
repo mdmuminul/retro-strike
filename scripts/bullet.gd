@@ -4,10 +4,12 @@ extends Area2D
 
 
 func _ready():
+
 	add_to_group("bullet")
 
 
 func _physics_process(delta):
+
 	position.y -= speed * delta
 
 	if position.y < -100:

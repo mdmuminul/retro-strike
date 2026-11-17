@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://dst2syhqkwgr8" path="res://scripts/mobile_controls.gd" id="8_a8run"]
 [ext_resource type="Texture2D" uid="uid://cu6k4dn8ictro" path="res://assets/backgrounds/Joystickbase_r.png" id="8_b1x3f"]
 [ext_resource type="Texture2D" uid="uid://ufaivvwij0ri" path="res://assets/backgrounds/joystick_knob_r.png" id="9_a8run"]
+[ext_resource type="Texture2D" uid="uid://v4esqbvus5y1" path="res://assets/backgrounds/bullet_r.png" id="12_blune"]
+[ext_resource type="FontFile" uid="uid://oyusilc8p1j8" path="res://assets/fonts/ARCADECLASSIC.TTF" id="12_th5th"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hujxm"]
 shader = ExtResource("2_hujxm")
@@ -34,7 +36,7 @@ texture = ExtResource("1_k2fmo")
 
 [node name="Earth" type="Sprite2D" parent="." unique_id=1054381994]
 material = SubResource("ShaderMaterial_hujxm")
-position = Vector2(7.000004, -2)
+position = Vector2(332, -32)
 scale = Vector2(0.9592593, 0.9592593)
 texture = ExtResource("2_k2fmo")
 script = ExtResource("3_6q06x")
@@ -64,13 +66,6 @@ position = Vector2(480, 470)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1011089343]
 layer = 2
-
-[node name="AmmoLabel" type="Label" parent="UI" unique_id=525725720]
-offset_left = 760.0
-offset_top = 21.0
-offset_right = 865.0
-offset_bottom = 44.0
-text = "Bullets: 25/25"
 
 [node name="MobileControls" type="Control" parent="UI" unique_id=1205800329]
 visible = false
@@ -114,6 +109,78 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1837216732]
+offset_left = 826.0
+offset_top = 20.0
+offset_right = 902.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"
+
+[node name="LivesLabel" type="Label" parent="UI" unique_id=2041028907]
+offset_left = 728.0
+offset_top = 21.0
+offset_right = 813.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_font_sizes/font_size = 22
+text = "♥ ♥ ♥"
+
+[node name="GameOverPanel" type="Panel" parent="UI" unique_id=1542301973]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel" unique_id=229786867]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 265.0
+offset_right = 550.0
+offset_bottom = 308.0
+theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_font_sizes/font_size = 41
+text = "GAME OVER"
+
+[node name="FinalScoreLabel" type="Label" parent="UI/GameOverPanel" unique_id=1395852587]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 330.0
+offset_right = 535.0
+offset_bottom = 363.0
+theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_font_sizes/font_size = 24
+text = "Final Score: 0"
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel" unique_id=1789059426]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 446.0
+offset_right = 940.0
+offset_bottom = 527.0
+theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_font_sizes/font_size = 26
+text = "Restart"
+
+[node name="AmmoContainer" type="HBoxContainer" parent="UI" unique_id=1726729538]
+offset_left = 20.0
+offset_right = 119.0
+offset_bottom = 40.0
+theme_override_constants/separation = 6
+
+[node name="AmmoIcon" type="TextureRect" parent="UI/AmmoContainer" unique_id=1106042196]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("12_blune")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AmmoLabel" type="Label" parent="UI/AmmoContainer" unique_id=525725720]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_th5th")
+text = "20/25"
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1437888925]
 wait_time = 1.5
