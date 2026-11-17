@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ufaivvwij0ri" path="res://assets/backgrounds/joystick_knob_r.png" id="9_a8run"]
 [ext_resource type="Texture2D" uid="uid://v4esqbvus5y1" path="res://assets/backgrounds/bullet_r.png" id="12_blune"]
 [ext_resource type="FontFile" uid="uid://oyusilc8p1j8" path="res://assets/fonts/ARCADECLASSIC.TTF" id="12_th5th"]
+[ext_resource type="Texture2D" uid="uid://d0iuyx6jj847d" path="res://assets/ui/heart.png" id="13_7smn1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hujxm"]
 shader = ExtResource("2_hujxm")
@@ -25,6 +26,10 @@ shader_parameter/blur_amount = 1.50000007125
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8run"]
 shader = ExtResource("2_hujxm")
 shader_parameter/blur_amount = 2.9690001410275
+
+[sub_resource type="SystemFont" id="SystemFont_i4fta"]
+
+[sub_resource type="SystemFont" id="SystemFont_io5cw"]
 
 [node name="Main" type="Node2D" unique_id=1247113335]
 script = ExtResource("1_ouso4")
@@ -111,22 +116,49 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=1837216732]
-offset_left = 826.0
-offset_top = 20.0
-offset_right = 902.0
-offset_bottom = 48.0
+offset_left = 804.0
+offset_top = 14.0
+offset_right = 880.0
+offset_bottom = 42.0
 theme_override_fonts/font = ExtResource("12_th5th")
 theme_override_font_sizes/font_size = 20
 text = "Score: 0"
 
+[node name="Heart 1" type="TextureRect" parent="UI" unique_id=2077654468]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 40.0
+texture = ExtResource("13_7smn1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heart 2" type="TextureRect" parent="UI" unique_id=679932222]
+custom_minimum_size = Vector2(24, 24)
+offset_left = 28.0
+offset_right = 52.0
+offset_bottom = 40.0
+texture = ExtResource("13_7smn1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heart 3" type="TextureRect" parent="UI" unique_id=1730112589]
+custom_minimum_size = Vector2(24, 24)
+offset_left = 56.0
+offset_right = 80.0
+offset_bottom = 40.0
+texture = ExtResource("13_7smn1")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="LivesLabel" type="Label" parent="UI" unique_id=2041028907]
+visible = false
 offset_left = 728.0
-offset_top = 21.0
+offset_top = 19.0
 offset_right = 813.0
-offset_bottom = 55.0
+offset_bottom = 53.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_fonts/font = SubResource("SystemFont_i4fta")
 theme_override_font_sizes/font_size = 22
 text = "♥ ♥ ♥"
 
@@ -165,9 +197,10 @@ theme_override_font_sizes/font_size = 26
 text = "Restart"
 
 [node name="AmmoContainer" type="HBoxContainer" parent="UI" unique_id=1726729538]
-offset_left = 20.0
-offset_right = 119.0
-offset_bottom = 40.0
+offset_left = 645.0
+offset_top = 9.0
+offset_right = 834.0
+offset_bottom = 50.0
 theme_override_constants/separation = 6
 
 [node name="AmmoIcon" type="TextureRect" parent="UI/AmmoContainer" unique_id=1106042196]
@@ -179,7 +212,7 @@ stretch_mode = 5
 
 [node name="AmmoLabel" type="Label" parent="UI/AmmoContainer" unique_id=525725720]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_th5th")
+theme_override_fonts/font = SubResource("SystemFont_io5cw")
 text = "20/25"
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1437888925]

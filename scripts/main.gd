@@ -8,7 +8,10 @@ var enemy_scene = preload(
 @onready var player = $Player
 
 @onready var score_label: Label = $UI/ScoreLabel
-@onready var lives_label: Label = $UI/LivesLabel
+
+@onready var heart1: TextureRect = $"UI/Heart 1"
+@onready var heart2: TextureRect = $"UI/Heart 2"
+@onready var heart3: TextureRect = $"UI/Heart 3"
 
 @onready var game_over_panel = $UI/GameOverPanel
 
@@ -22,13 +25,11 @@ var enemy_scene = preload(
 
 var score: int = 0
 var lives: int = 3
-
 var game_over: bool = false
 
 
 func _ready():
 	enemy_spawn_timer.timeout.connect(_spawn_enemy)
-
 	restart_button.pressed.connect(_restart_game)
 
 	game_over_panel.hide()
@@ -100,20 +101,17 @@ func _on_enemy_hit_player():
 
 func update_ui():
 	score_label.text = (
-		"SCORE  "
+		"SCORE "
 		+ str(score).pad_zeros(4)
 	)
 
-	lives_label.text = get_hearts_text(lives)
+	update_lives_display()
 
 
-func get_hearts_text(count: int) -> String:
-	var hearts := ""
-
-	for i in range(count):
-		hearts += "♥ "
-
-	return hearts.strip_edges()
+func update_lives_display():
+	heart1.visible = lives >= 1
+	heart2.visible = lives >= 2
+	heart3.visible = lives >= 3
 
 
 func end_game():
@@ -123,16 +121,14 @@ func end_game():
 
 	player.can_control = false
 
-	# Stop all remaining enemies
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		enemy.set_physics_process(false)
 
-	# Stop remaining bullets
 	for bullet in get_tree().get_nodes_in_group("bullet"):
 		bullet.set_physics_process(false)
 
 	final_score_label.text = (
-		"FINAL SCORE  "
+		"FINAL SCORE "
 		+ str(score).pad_zeros(4)
 	)
 
